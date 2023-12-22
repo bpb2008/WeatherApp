@@ -1,20 +1,18 @@
 import React from "react";
 
-const WeatherCard = () => {
+const WeatherCard = ({ weatherData }) => {
   return (
     <div>
-      <p>
-        City: <span>//insert weather daata here </span>
-      </p>
-      <p>
-        Description: <span>//insert description here</span>
-      </p>
-      <p>
-        Temperature: <span>//insert temperature here</span>
-      </p>
-      <p>
-        Feels Like: <span>//insert feels like info here</span>
-      </p>
+      <p>City: {weatherData.city}</p>
+      <p>Temperature: {weatherData.temperature}°F</p>
+      <p>Feels Like: {weatherData.feelsLike}°F</p>
+      <p>Description: {weatherData.description}</p>
+      {weatherData.icon && (
+        <img
+          src={`http://openweathermap.org/img/wn/${weatherData.icon}.png`}
+          alt="Weather Icon"
+        />
+      )}
     </div>
   );
 };
