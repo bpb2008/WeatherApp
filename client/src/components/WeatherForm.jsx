@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherCard from "./WeatherCard";
+import { Typography, TextField, Button, Container, Paper } from "@mui/material";
 
 const WeatherForm = () => {
   const [city, setCity] = useState("");
@@ -18,25 +19,42 @@ const WeatherForm = () => {
   };
 
   return (
-    <div>
-      <h1>Brittany's Weather App</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          getWeather();
-        }}
-      >
-        <input
-          type="text"
-          id="cityInput"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-        <button type="submit">Get Weather!</button>
-      </form>
-      {weatherData && <WeatherCard weatherData={weatherData} />}
-    </div>
+    <Container maxWidth="md">
+      <Paper elevation={1} square={false} sx={{ width: 800, height: 100 }}>
+        <h1>Brittany's Weather App</h1>
+      </Paper>
+
+      <Paper elevation={1} square={false} sx={{ width: 800, height: 150 }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            getWeather();
+          }}
+        >
+          <TextField
+            id="cityInput"
+            label="Choose a city"
+            variant="outlined"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
+            fullWidth
+          />
+          <div className="button">
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{ backgroundColor: "#19647E" }}
+            >
+              Get Weather!
+            </Button>
+          </div>
+        </form>
+      </Paper>
+      <Paper elevation={1} square={false} sx={{ width: 800, height: 300 }}>
+        {weatherData && <WeatherCard weatherData={weatherData} />}
+      </Paper>
+    </Container>
   );
 };
 

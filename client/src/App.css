@@ -1,42 +1,66 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0; 
+  font-family:Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body {
+  display: flex; 
+  justify-content: center; 
+  height: 65vw; 
+  margin-top: 40px; 
+  background-image: linear-gradient(#fff,#73D7FF); 
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img {
+  width: 100px;
+  height: 100px; 
+  background-image: linear-gradient(#fff,#73D7FF);
+  margin-top: 10px; 
+  margin-left: 90px; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+span {
+  color: #28AFB0; 
 }
 
-.card {
-  padding: 2em;
+form {
+  width: 600px;  
+  margin-top: 20px; 
+  padding: 25px; 
+  padding-left: 230px; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
-.read-the-docs {
-  color: #888;
+h1 {
+  margin: 50px;
+  padding: 30px; 
+  padding-left: 140px;
+  font-size: 40px; 
+  color:#19647E; 
+}
+
+h3 {
+  margin-left: 70px; 
+}
+
+.button {
+  margin-top: 20px;  
+}
+
+.weatherDisplay {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+  margin: 20px; 
+  padding: 20px; 
+  font-size: 30px; 
+  color: #37392E; 
+}
+
+.icon {
+  margin-left: 20px; 
 }
