@@ -1,20 +1,40 @@
 import React, { useState } from "react";
 import WeatherCard from "./WeatherCard";
-import { Typography, TextField, Button, Container, Paper } from "@mui/material";
+import {
+  CircularProgress,
+  TextField,
+  Button,
+  Container,
+  Paper,
+} from "@mui/material";
 
 const WeatherForm = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState("");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const getWeather = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         `http://localhost:8080/weather?city=${city}`
       );
       const data = await response.json();
-      setWeatherData(data);
+
+      if (data.error) {
+        setError(data.error);
+        setWeatherData(null);
+      } else {
+        setWeatherData(data);
+        setError(null);
+      }
     } catch (error) {
-      console.log("Yikes! Error fetching weather data: ", error);
+      console.error("Yikes! Error fetching weather data: ", error);
+      setError("Uhoh! Typo? Please enter a valid city name and try again.");
+      setWeatherData(null);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,7 +64,7 @@ const WeatherForm = () => {
             <Button
               variant="contained"
               type="submit"
-              sx={{ backgroundColor: "#19647E" }}
+              sx={{ backgroundColor: "#19647E", "&:hover": "#28AFB0" }}
             >
               Get Weather!
             </Button>
@@ -52,6 +72,12 @@ const WeatherForm = () => {
         </form>
       </Paper>
       <Paper elevation={1} square={false} sx={{ width: 800, height: 300 }}>
+        {loading && <CircularProgress style={{ marginLeft: "50px" }} />}
+        {error && (
+          <p style={{ color: "red", marginLeft: 200 }}>
+            Uhoh! Typo? Please enter a valid city name and try again.
+          </p>
+        )}
         {weatherData && <WeatherCard weatherData={weatherData} />}
       </Paper>
     </Container>
