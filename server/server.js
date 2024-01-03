@@ -17,10 +17,8 @@ app.use(
 
 app.get("/weather", async (req, res) => {
   try {
-    const apiKey = process.env.API_KEY;
-    console.log(process.env); 
+    const apiKey = process.env.API_KEY; 
     const city = req.query.city;
-    console.log("here", apiKey);
 
     if (!city) {
       return res.status(400).json({ error: "City parameter is required!" });
@@ -37,17 +35,21 @@ app.get("/weather", async (req, res) => {
     const feelsLikeCelsius = feelsLikeKelvin - 273.15;
     const feelsLikeFahrenheit = (feelsLikeCelsius * 9) / 5 + 32;
 
+    const { name, weather } = response.data; 
+    const { description, icon } = weather[0]; 
+    const temperature = temperatureFahrenheit.toFixed(2); 
+    const feelsLike = feelsLikeFahrenheit.toFixed(2); 
+
     const weatherData = {
-      city: response.data.name,
-      description: response.data.weather[0].description,
-      temperature: temperatureFahrenheit.toFixed(2),
-      feelsLike: feelsLikeFahrenheit.toFixed(2),
-      icon: response.data.weather[0].icon,
+      city: name,
+      description,
+      temperature,
+      feelsLike,
+      icon,
     };
 
     res.json(weatherData);
   } catch (error) {
-    // console.log("Whoops! I'm an error!", error);
     res.status(500).json({ error: "Internal Service Error" });
   }
 });

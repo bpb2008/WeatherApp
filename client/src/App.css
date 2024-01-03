@@ -1,23 +1,33 @@
 * {
   margin: 0;
   padding: 0; 
-  font-family:Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+html {
+  width: 100%; 
+  height: 100%; 
+  margin: 0;  
+  padding: 0; 
+  background: linear-gradient(#fff,#73D7FF); 
+  background-repeat: no-repeat;  
+  background-size: cover; 
 }
 
 body {
   display: flex; 
   justify-content: center; 
-  height: 65vw; 
-  margin-top: 40px; 
-  background-image: linear-gradient(#fff,#73D7FF); 
+  width: 100vw; 
+  height: 100vh; 
+  margin: 0; 
+  padding: 0;
 }
 img {
   width: 100px;
   height: 100px; 
   background-image: linear-gradient(#fff,#73D7FF);
   margin-top: 10px; 
-  margin-left: 90px; 
+  margin-bottom: 10px; 
 }
 
 span {
@@ -26,41 +36,9 @@ span {
 
 form {
   width: 600px;  
-  margin-top: 20px; 
   padding: 25px; 
-  padding-left: 230px; 
   display: flex; 
   flex-direction: column;
   align-items: center;
 }
 
-h1 {
-  margin: 50px;
-  padding: 30px; 
-  padding-left: 140px;
-  font-size: 40px; 
-  color:#19647E; 
-}
-
-h3 {
-  margin-left: 70px; 
-}
-
-.button {
-  margin-top: 20px;  
-}
-
-.weatherDisplay {
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  flex-direction: column; 
-  margin: 20px; 
-  padding: 20px; 
-  font-size: 30px; 
-  color: #37392E; 
-}
-
-.icon {
-  margin-left: 20px; 
-}
