@@ -18,12 +18,10 @@ const WeatherCard = ({ weatherData }) => {
       <Typography variant="h3">
         <span>{weatherData.city}</span>
       </Typography>
-      {weatherData.icon && (
-        <img
-          src={`http://openweathermap.org/img/wn/${weatherData.icon}.png`}
-          alt="Weather Icon"
-        />
-      )}
+      <img
+        src={`http://openweathermap.org/img/wn/${weatherData.icon}.png`}
+        alt="Weather Icon"
+      />
       <Typography variant="h5">
         Temperature: <span>{weatherData.temperature}°F</span>
       </Typography>

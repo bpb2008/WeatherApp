@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 import "./App.css";
 
@@ -16,7 +15,17 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const isSmallScreen = useMediaQuery("(max-width: 480px)");
+  const sharedCSS = {
+    width: {
+      s: "350px",
+      md: "400px",
+      lg: "800px",
+    },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  };
 
   const getWeather = async () => {
     try {
@@ -24,7 +33,6 @@ function App() {
       const apiUrl = `${
         import.meta.env.VITE_BASE_API_URL
       }/weather?city=${city}`;
-      console.log("env variable", import.meta.env.VITE_BASE_API_URL);
       const response = await fetch(apiUrl);
       const data = await response.json();
 
@@ -39,8 +47,9 @@ function App() {
       console.error("Yikes! Error fetching weather data: ", error);
       setError("Uhoh! Typo? Please enter a valid city name and try again.");
       setWeatherData(null);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -48,16 +57,18 @@ function App() {
       <Paper
         elevation={1}
         sx={{
-          width: 800,
+          ...sharedCSS,
           height: 100,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
           marginTop: 5,
         }}
       >
-        <Typography variant="h2" sx={{ color: "#19647E" }}>
+        <Typography
+          variant="h2"
+          sx={{
+            color: "#19647E",
+            fontSize: { s: "10px", md: "20px", lg: "50px" },
+          }}
+        >
           Brittany's Weather App
         </Typography>
       </Paper>
@@ -65,12 +76,8 @@ function App() {
       <Paper
         elevation={1}
         sx={{
-          width: 800,
+          ...sharedCSS,
           height: 175,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
           marginTop: 3,
         }}
       >
@@ -105,12 +112,8 @@ function App() {
       <Paper
         elevation={1}
         sx={{
-          width: 800,
+          ...sharedCSS,
           height: 350,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
           marginTop: 3,
         }}
       >
