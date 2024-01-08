@@ -15,8 +15,9 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const sharedCSS = {
+  const paperStyles = {
     width: {
+      xs: "350px",
       s: "350px",
       md: "400px",
       lg: "800px",
@@ -57,7 +58,7 @@ function App() {
       <Paper
         elevation={1}
         sx={{
-          ...sharedCSS,
+          ...paperStyles,
           height: 100,
           marginTop: 5,
         }}
@@ -66,7 +67,7 @@ function App() {
           variant="h2"
           sx={{
             color: "#19647E",
-            fontSize: { s: "10px", md: "20px", lg: "50px" },
+            fontSize: { xs: "30px", s: "30px", md: "30px", lg: "30px" },
           }}
         >
           Brittany's Weather App
@@ -76,8 +77,8 @@ function App() {
       <Paper
         elevation={1}
         sx={{
-          ...sharedCSS,
-          height: 175,
+          ...paperStyles,
+          height: { xs: 125, s: 125, md: 175, lg: 175 },
           marginTop: 3,
         }}
       >
@@ -94,7 +95,15 @@ function App() {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
-            fullWidth
+            sx={{
+              width: {
+                xs: "330px",
+                s: "330px",
+                md: "380px",
+                lg: "780px",
+                xl: "780px",
+              },
+            }}
           />
           <Button
             variant="contained"
@@ -112,7 +121,7 @@ function App() {
       <Paper
         elevation={1}
         sx={{
-          ...sharedCSS,
+          ...paperStyles,
           height: 350,
           marginTop: 3,
         }}
