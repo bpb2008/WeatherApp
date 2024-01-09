@@ -19,7 +19,7 @@ const WeatherCard = ({ weatherData }) => {
         variant="h3"
         sx={{
           color: "#19647E",
-          fontSize: { xs: "30px", s: "30px", md: "30px", lg: "30px" },
+          fontSize: "30px",
         }}
       >
         <span>{weatherData.city}</span>

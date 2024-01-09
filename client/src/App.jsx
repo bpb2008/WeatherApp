@@ -67,7 +67,7 @@ function App() {
           variant="h2"
           sx={{
             color: "#19647E",
-            fontSize: { xs: "30px", s: "30px", md: "30px", lg: "30px" },
+            fontSize: "30px",
           }}
         >
           Brittany's Weather App
